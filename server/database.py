@@ -12,7 +12,7 @@ class Question(db.Model):
         return f"<Question id: {self.id}, question_text: {self.question_text}>"
 
     def to_dict(self):
-        return {"question_text": self.question_text}
+        return {"question_text": self.question_text, "question_id": self.id}
 
 
 class User(db.Model):
@@ -78,6 +78,8 @@ def initialize(app: Flask) -> SQLAlchemy:
             "What is your favorite color?",
             "What is your favorite city?",
             "What is your favorite food?",
+            "What is your favorite phone?",
+            "What is your favorite chair?",
         ]
         init_objects += [Question(question_text=q) for q in questions_str]
 

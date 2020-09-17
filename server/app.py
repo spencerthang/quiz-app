@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from database import initialize, Question, User, Response, Config
 
 from typing import Dict, List
@@ -7,6 +8,7 @@ DATABASE_URI = "sqlite:///test.db"
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URI
+CORS(app)
 db = initialize(app)
 
 
